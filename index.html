@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation to Marine Drive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #756AB6, #8E7AB5);
+            font-family: 'Lucida Calligraphy', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: #B784B7;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color:#F3D0D7;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(75, 121, 161, 0.4);
+        }
+
+        p {
+            font-size: 2rem;
+            color: #EED3D9;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(40, 60, 134, 0.4);
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-family: 'Courgette', cursive;
+        }
+
+        .yes-button {
+            background: #6a82fb;
+            color: #fff;
+        }
+
+        .no-button {
+            background: #1e0c10;
+            color: #fff;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .overlay-content {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            color: #4b79a1;
+            font-size: 2rem;
+        }
+
+        .animation-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart,
+        .cry-emoji {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        /* Add this to your existing CSS */
+.animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.gif {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Oieeeeee Heroooooooo Myyy cutieeeee putieeee;)😚 </h1>
+        <p>Kya Aap humre Sathe Marine Drives Me Avat Baduuu on 23rd or 24th ?👉👈😽
+        </p>
+        <div class="button-group">
+            <button class="yes-button" onclick="handleResponse('yes')">Absolutely!😘🥳
+
+            </button>
+            <button class="no-button" onclick="handleResponse('no')">Nahiii😭</button>
+        </div>
+        <div class="animation-container" id="animation-container"></div>
+    </div>
+    <div class="overlay" id="overlay">
+        <div class="overlay-content" id="overlay-content"></div>
+    </div>
+    <script>
+        function handleResponse(response) {
+            const overlay = document.getElementById('overlay');
+            const overlayContent = document.getElementById('overlay-content');
+            const animationContainer = document.getElementById('animation-container');
+            animationContainer.innerHTML = ''; // Clear previous animations
+
+            if (response === 'yes') {
+                overlayContent.innerText = 'yeassssssssssssssssss💃💃💃💃💃🕺🕺🕺🕺🕺lobeeeeee youuuuuuu😚😚';
+                for (let i = 0; i < 20; i++) {
+                    createAnimationElement('heart', '❤️');
+                }
+            } else {
+                overlayContent.innerText = 'surieeee but NO dosent exist 🤭🤭😘😘';
+                for (let i = 0; i < 20; i++) {
+                    createAnimationElement('cry-emoji', '😭');
+                }
+            }
+
+            overlay.style.display = 'flex';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 3000);
+        }
+
+        function createAnimationElement(className, content) {
+            const animationElement = document.createElement('div');
+            animationElement.className = className;
+            animationElement.innerText = content;
+            animationElement.style.left = Math.random() * 100 + 'vw';
+            animationElement.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            document.getElementById('animation-container').appendChild(animationElement);
+        }
+        /* Add this to your existing JavaScript */
+        
+        
+        function createGifElement(src, offset) {
+            const gifElement = document.createElement('img');
+            gifElement.src = src;
+            gifElement.className = 'gif';
+            gifElement.style.left = Math.random() * 100 + 'vw';
+            gifElement.style.top = Math.random() * 100 + 'vh';
+            gifElement.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            document.getElementById('animation-container').appendChild(gifElement);
+        }
+        function handleResponse(response) {
+            const overlay = document.getElementById('overlay');
+            const overlayContent = document.getElementById('overlay-content');
+            const animationContainer = document.getElementById('animation-container');
+            animationContainer.innerHTML = ''; // Clear previous animations
+        
+            if (response === 'yes') {
+                overlayContent.innerText = 'yeassssssssssssssssss💃💃💃💃💃🕺🕺🕺🕺🕺lobeeeeee youuuuuuu😚😚';
+                for (let i = 0; i < 10; i++) {
+                    createGifElement('https://media.tenor.com/-sE9B42RL2wAAAAM/jm.gif', i * 100); // Dancing cat GIF
+                }
+            } else {
+                overlayContent.innerText = 'surieeee but NO dosent exist 🤭🤭😘😘';
+                for (let i = 0; i < 10; i++) {
+                    createGifElement('https://media.tenor.com/wmy7KME5DnwAAAAM/cat-ai.gif', i * 100); // Sad cat GIF
+                }
+            }
+        
+            overlay.style.display = 'flex';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 3000);
+        }
+        
+        function createGifElement(src, offset) {
+            const gifElement = document.createElement('img');
+            gifElement.src = src;
+            gifElement.className = 'gif';
+            gifElement.style.left = Math.random() * 100 + 'vw';
+            gifElement.style.top = Math.random() * 100 + 'vh';
+            gifElement.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            document.getElementById('animation-container').appendChild(gifElement);
+        }
+        
+
+    </script>
+</body>
+</html>
